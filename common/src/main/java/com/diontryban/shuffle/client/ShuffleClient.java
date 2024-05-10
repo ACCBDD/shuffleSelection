@@ -142,7 +142,7 @@ public class ShuffleClient extends CommonClientModInitializer {
         return switchSlotLogic(items, random,
                 (i, stack) -> WeightedEntry.wrap(i, stack.getCount()),
                 (list, rand) -> WeightedRandom.getRandomItem(rand, list)
-                        .map(WeightedEntry.Wrapper::getData)
+                        .map(WeightedEntry.Wrapper::data)
                         .orElse(-1)
         );
     }
