@@ -1,4 +1,9 @@
 # Changelog
+## v20.6.0
+- Update to MC 1.20.6.
+- Add setting for sound effects.
+  - Suggested by @nco2k.
+
 ## v20.4.1
 - Fixed logo file on NeoForge.
 

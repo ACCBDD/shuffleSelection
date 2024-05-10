@@ -25,4 +25,6 @@ import com.google.gson.annotations.SerializedName;
 public class ShuffleOptions extends ModOptions {
     @SerializedName("use_weighted_random")
     public boolean useWeightedRandom = false;
+    @SerializedName("play_sound_effects")
+    public boolean playSoundEffects = true;
 }

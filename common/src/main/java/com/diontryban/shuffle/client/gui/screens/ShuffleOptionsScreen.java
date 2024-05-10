@@ -42,5 +42,11 @@ public class ShuffleOptionsScreen extends ModOptionsScreen<ShuffleOptions> {
                 options.get().useWeightedRandom,
                 value -> options.get().useWeightedRandom = value
         ));
+        this.list.addBig(OptionInstance.createBoolean(
+                "shuffle.options.play_sound_effects",
+                value -> Tooltip.create(Component.translatable("shuffle.options.play_sound_effects.tooltip")),
+                options.get().playSoundEffects,
+                value -> options.get().playSoundEffects = value
+        ));
     }
 }

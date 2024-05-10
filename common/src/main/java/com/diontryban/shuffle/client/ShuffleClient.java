@@ -79,10 +79,16 @@ public class ShuffleClient extends CommonClientModInitializer {
             shuffle = !shuffle;
             if (shuffle) {
                 player.displayClientMessage(Component.translatable("message.shuffle.enable"), true);
-                player.playSound(SoundEvents.TRIPWIRE_CLICK_OFF, 0.5f, 1.0f);
+
+                if (Shuffle.OPTIONS.get().playSoundEffects) {
+                    player.playSound(SoundEvents.TRIPWIRE_CLICK_OFF, 0.5f, 1.0f);
+                }
             } else {
                 player.displayClientMessage(Component.translatable("message.shuffle.disable"), true);
-                player.playSound(SoundEvents.TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
+
+                if (Shuffle.OPTIONS.get().playSoundEffects) {
+                    player.playSound(SoundEvents.TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
+                }
             }
         } else if (!KEY.isDown() && keyWasDown) {
             keyWasDown = false;
