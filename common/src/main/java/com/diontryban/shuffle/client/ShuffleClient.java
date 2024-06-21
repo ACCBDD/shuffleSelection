@@ -19,11 +19,10 @@
 
 package com.diontryban.shuffle.client;
 
-import com.diontryban.ash_api.client.event.ClientTickEvents;
+import com.diontryban.ash_api.client.event.ClientTickEvent;
 import com.diontryban.ash_api.client.gui.screens.ModOptionsScreenRegistry;
 import com.diontryban.ash_api.client.input.KeyMappingRegistry;
 import com.diontryban.ash_api.event.UseBlockEvent;
-import com.diontryban.ash_api.modloader.CommonClientModInitializer;
 import com.diontryban.shuffle.Shuffle;
 import com.diontryban.shuffle.client.gui.screens.ShuffleOptionsScreen;
 import net.minecraft.client.KeyMapping;
@@ -31,7 +30,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.WeightedEntry;
@@ -51,9 +49,9 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.ToIntBiFunction;
 
-public class ShuffleClient extends CommonClientModInitializer {
-    private static final KeyMapping KEY = KeyMappingRegistry.registerKeyMapping(
-            new ResourceLocation(Shuffle.MOD_ID, "shuffle"),
+public class ShuffleClient {
+    private static final KeyMapping KEY = KeyMappingRegistry.register(
+            ResourceLocation.fromNamespaceAndPath(Shuffle.MOD_ID, "shuffle"),
             GLFW.GLFW_KEY_R,
             Shuffle.MOD_ID
     );
@@ -62,14 +60,13 @@ public class ShuffleClient extends CommonClientModInitializer {
     private static boolean keyWasDown = false;
     private static int slotToSwitchTo = -1;
 
-    @Override
-    public void onInitializeClient() {
-        ModOptionsScreenRegistry.registerModOptionsScreen(Shuffle.OPTIONS, ShuffleOptionsScreen::new);
-        ClientTickEvents.registerStart(ShuffleClient::onClientStartTick);
-        UseBlockEvent.register(ShuffleClient::onRightClickBlock);
+    public static void init() {
+        ModOptionsScreenRegistry.register(Shuffle.OPTIONS, ShuffleOptionsScreen::new);
+        ClientTickEvent.Pre.register(ShuffleClient::onClientTickPre);
+        UseBlockEvent.register(ShuffleClient::onUseBlock);
     }
 
-    private static void onClientStartTick(Minecraft client) {
+    private static void onClientTickPre(Minecraft client) {
         final var player = client.player;
         if (player == null) { return; }
 
@@ -100,7 +97,7 @@ public class ShuffleClient extends CommonClientModInitializer {
         }
     }
 
-    private static InteractionResult onRightClickBlock(
+    private static InteractionResult onUseBlock(
             Player player,
             Level level,
             InteractionHand hand,

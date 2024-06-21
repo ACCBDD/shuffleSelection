@@ -19,11 +19,13 @@
 
 package com.diontryban.shuffle.client;
 
-import com.diontryban.ash_api.modloader.NeoForgeClientModInitializer;
 import com.diontryban.shuffle.Shuffle;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.Mod;
 
-public class ShuffleClientNeoForge extends NeoForgeClientModInitializer {
+@Mod(value = Shuffle.MOD_ID, dist = Dist.CLIENT)
+public class ShuffleClientNeoForge {
     public ShuffleClientNeoForge() {
-        super(Shuffle.MOD_ID, ShuffleClient::new);
+        ShuffleClient.init();
     }
 }

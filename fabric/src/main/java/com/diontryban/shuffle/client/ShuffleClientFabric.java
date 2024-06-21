@@ -19,10 +19,11 @@
 
 package com.diontryban.shuffle.client;
 
-import com.diontryban.ash_api.modloader.FabricClientModInitializer;
+import net.fabricmc.api.ClientModInitializer;
 
-public class ShuffleClientFabric extends FabricClientModInitializer {
-    public ShuffleClientFabric() {
-        super(ShuffleClient::new);
+public class ShuffleClientFabric implements ClientModInitializer {
+    @Override
+    public void onInitializeClient() {
+        ShuffleClient.init();
     }
 }
