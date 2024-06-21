@@ -36,6 +36,8 @@ public class ShuffleOptionsScreen extends ModOptionsScreen<ShuffleOptions> {
 
     @Override
     protected void addOptions() {
+        if (list == null) { return; }
+
         this.list.addBig(OptionInstance.createBoolean(
                 "shuffle.options.use_weighted_random",
                 value -> Tooltip.create(Component.translatable("shuffle.options.use_weighted_random.tooltip")),

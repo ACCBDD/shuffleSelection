@@ -1,4 +1,7 @@
 # Changelog
+## v21.0.1
+- Fix options screen rendering duplicate option buttons (Ash API fix)
+
 ## v21.0.0
 - Update to MC 1.21
 
