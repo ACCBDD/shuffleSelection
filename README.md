@@ -5,6 +5,8 @@
 
 Shuffle allows players to place blocks randomly from their hotbar. This can help speed up the building process and add variety to buildings.
 
+To enable shuffling, press the `r` key by default. This can be changed in Minecraft's controls options menu.
+
 [YouTube Demonstration](https://youtu.be/iTEJO_tNMgs)
 
 ---
