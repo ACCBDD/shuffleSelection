@@ -33,7 +33,6 @@ public class ShuffleOptionsScreen extends ModOptionsScreen<ShuffleOptions> {
     public ShuffleOptionsScreen(@NotNull ModOptionsManager<ShuffleOptions> options, Screen parent) {
         super(Component.literal(Shuffle.MOD_NAME), options, parent);
     }
-
     @Override
     protected void addOptions() {
         if (list == null) { return; }
@@ -50,5 +49,14 @@ public class ShuffleOptionsScreen extends ModOptionsScreen<ShuffleOptions> {
                 options.get().playSoundEffects,
                 value -> options.get().playSoundEffects = value
         ));
+        for (var i = 0; i <= 8; i++){
+            int finalI = i;
+            this.list.addBig(OptionInstance.createBoolean(
+                    "shuffle.options.slot_" + (i + 1),
+                    value -> Tooltip.create(Component.translatable("shuffle.options.slots.tooltip")),
+                    options.get().slotStates[i],
+                    value -> options.get().slotStates[finalI] = value
+            ));
+        }
     }
 }

@@ -6,5 +6,15 @@
     "shuffle.options.use_weighted_random": "Pick Blocks by Stack Count",
     "shuffle.options.use_weighted_random.tooltip": "When picking a random block to place, the amount in the stack will affect the chance of a block being placed.",
     "shuffle.options.play_sound_effects": "Play Sound Effects",
-    "shuffle.options.play_sound_effects.tooltip": "When on, a sound effect is played when toggling shuffle mode."
+    "shuffle.options.play_sound_effects.tooltip": "When on, a sound effect is played when toggling shuffle mode.",
+    "shuffle.options.slot_1": "Slot 1",
+    "shuffle.options.slot_2": "Slot 2",
+    "shuffle.options.slot_3": "Slot 3",
+    "shuffle.options.slot_4": "Slot 4",
+    "shuffle.options.slot_5": "Slot 5",
+    "shuffle.options.slot_6": "Slot 6",
+    "shuffle.options.slot_7": "Slot 7",
+    "shuffle.options.slot_8": "Slot 8",
+    "shuffle.options.slot_9": "Slot 9",
+    "shuffle.options.slots.tooltip": "Whether this slot will be selected"
 }
