@@ -22,12 +22,17 @@ package com.diontryban.shuffle.client.gui.screens;
 import com.diontryban.ash_api.client.gui.screens.ModOptionsScreen;
 import com.diontryban.ash_api.options.ModOptionsManager;
 import com.diontryban.shuffle.Shuffle;
+import com.diontryban.shuffle.client.gui.widgets.HotbarLockButtons;
 import com.diontryban.shuffle.options.ShuffleOptions;
 import net.minecraft.client.OptionInstance;
+import net.minecraft.client.gui.components.MultiLineTextWidget;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class ShuffleOptionsScreen extends ModOptionsScreen<ShuffleOptions> {
     public ShuffleOptionsScreen(@NotNull ModOptionsManager<ShuffleOptions> options, Screen parent) {
@@ -49,14 +54,7 @@ public class ShuffleOptionsScreen extends ModOptionsScreen<ShuffleOptions> {
                 options.get().playSoundEffects,
                 value -> options.get().playSoundEffects = value
         ));
-        for (var i = 0; i <= 8; i++){
-            int finalI = i;
-            this.list.addBig(OptionInstance.createBoolean(
-                    "shuffle.options.slot_" + (i + 1),
-                    value -> Tooltip.create(Component.translatable("shuffle.options.slots.tooltip")),
-                    options.get().slotStates[i],
-                    value -> options.get().slotStates[finalI] = value
-            ));
-        }
+        this.list.addSmall(List.of(new MultiLineTextWidget(0, 5, Component.empty(), font))); //spacing
+        this.list.addSmall(List.of(new HotbarLockButtons(65, CommonComponents.EMPTY, options)));
     }
 }
